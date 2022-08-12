@@ -8,9 +8,9 @@ const findById = async (id) => {
   if (!product) return null;
 
   return product;
-}
+};
 
 module.exports = {
   getAll,
-  findById
+  findById,
 };

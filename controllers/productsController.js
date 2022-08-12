@@ -17,5 +17,5 @@ const findById = async (req, res) => {
 
 module.exports = {
   getAll,
-  findById
+  findById,
 };

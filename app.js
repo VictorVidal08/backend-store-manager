@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const products = require('./controllers/productsController')
+const products = require('./controllers/productsController');
 
 const app = express();
 
@@ -11,7 +11,6 @@ app.use(bodyParser.json());
 app.get('/', (_request, response) => {
   response.send();
 });
-
 
 app.get('/products', products.getAll);
 
