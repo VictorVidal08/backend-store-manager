@@ -27,7 +27,7 @@ const create = async (name) => {
   `;
 
   const [result] = await connection.execute(query, [name]);
-  console.log('result', result);
+  // console.log('result', result);
   return { id: result.insertId, name };
 };
 

@@ -19,10 +19,9 @@ const create = async (req, res) => {
   try {
     const { name } = req.body;
     const insert = await productsService.create(name);
-    console.log('insert', insert);
+    // console.log('insert', insert);
     return res.status(201).json(insert);
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: 'Houve um problema (ver arquivo productsController)' });
   }
 };
