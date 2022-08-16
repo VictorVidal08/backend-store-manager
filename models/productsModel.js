@@ -9,7 +9,7 @@ const getAll = async () => {
 
 const findById = async (id) => {
   const query = `
-    SELECT id, name 
+    SELECT id, name
     FROM products 
     WHERE id = ?
   `;
@@ -21,7 +21,18 @@ const findById = async (id) => {
   return productsData[0];
 };
 
+const create = async (name) => {
+  const query = `
+    INSERT INTO products (name) VALUES (?);
+  `;
+
+  const [result] = await connection.execute(query, [name]);
+  console.log('result', result);
+  return { id: result.insertId, name };
+};
+
 module.exports = {
   getAll,
   findById,
+  create,
 };

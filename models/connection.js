@@ -1,5 +1,5 @@
 const mysql = require('mysql2/promise');
-require('dotenv').config(); // não se esqueça de configurar suas variáveis de ambiente aqui na configuração
+require('dotenv').config();
 
 const {
   MYSQL_HOST,
