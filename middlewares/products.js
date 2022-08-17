@@ -10,9 +10,11 @@ const productsSchema = Joi.object({
 const validation = (req, res, next) => {
   const { name } = req.body;
   const isValid = productsSchema.validate({ name });
-  
-  console.log('validation', isValid.error);
+  console.log('validation', isValid);
+
   switch (true) {
+    case (!isValid.error):
+      break;      
     case isValid.error.details[0].type === 'string.min': {
       return res.status(422).json({ message: isValid.error.message });
     }
@@ -23,10 +25,7 @@ const validation = (req, res, next) => {
       console.log('validation error');
     }
   }
-  
-  /* if (isValid.error) {
-    return res.status(422).json({ message: isValid.error.message });
-  } */
+
   next();
 };
 
