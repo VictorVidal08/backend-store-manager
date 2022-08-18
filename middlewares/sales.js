@@ -18,19 +18,6 @@ const validation = (req, res, next) => {
     if (error.details[0].type === 'number.min') {
       return res.status(422).json({ message: `"${newMessage[1]}` });
   }
-
-  /* switch (true) {
-    case (isValid.error):
-      return 
-    case isValid.error.details[0].type === 'string.min': {
-      return res.status(422).json({ message: isValid.error.message });
-    }
-    case isValid.error.details[0].type === 'any.required': {
-      return res.status(400).json({ message: isValid.error.message });
-    }
-    default: {
-      console.log('validation error');
-    } */
   }
 
   next();

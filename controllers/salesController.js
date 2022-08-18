@@ -1,5 +1,20 @@
 const salesService = require('../services/salesService');
 
+const getAll = async (_req, res) => {
+  const resultado = await salesService.getAll();
+  return res.status(200).json(resultado);
+};
+
+const findById = async (req, res) => {
+  const { id } = req.params;
+
+  const sales = await salesService.findById(id);
+
+  if (!sales) return res.status(404).json({ message: 'Sale not found' });
+
+  res.status(200).json(sales);
+};
+
 const create = async (req, res) => {
   try {
     const products = req.body;
@@ -17,5 +32,7 @@ const create = async (req, res) => {
 };
 
 module.exports = {
+  getAll,
+  findById,
   create,
 };

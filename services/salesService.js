@@ -1,16 +1,17 @@
 const salesModel = require('../models/salesModel');
 const productModel = require('../models/productsModel');
 
-const create = async (products) => {
-  /* if (products.length === 1) {
-    const [{ productId }] = products;
-    // console.log(productId);
-    const checkLength = await productModel.findById(productId);
-    if (!checkLength.length) {
-      return { message: 'Product not found' };
-    }
-  } */
+const getAll = async () => salesModel.getAll();
 
+const findById = async (id) => {
+  const sale = await salesModel.findById(id);
+
+  if (!sale) return null;
+
+  return sale;
+};
+
+const create = async (products) => {
   const checkId = await Promise.all(products
     .map(({ productId }) => productModel.findById(productId)));
   // console.log(checkId);
@@ -24,5 +25,7 @@ const create = async (products) => {
 };
 
 module.exports = {
+  getAll,
+  findById,
   create,
 };

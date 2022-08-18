@@ -23,6 +23,9 @@ app.post('/products', validateProduct.validation, products.create);
 
 app.post('/sales', salesValidation.validation, sales.create);
 
+app.get('/sales', sales.getAll);
+
+app.get('/sales/:id', sales.findById);
 // não remova essa exportação, é para o avaliador funcionar
 // você pode registrar suas rotas normalmente, como o exemplo acima
 // você deve usar o arquivo index.js para executar sua aplicação 
