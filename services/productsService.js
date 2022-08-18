@@ -10,6 +10,12 @@ const findById = async (id) => {
   return product;
 };
 
+const deleteId = async (id) => {
+  const result = await productsModel.deleteId(id);
+  // console.log('service', result);
+  return result;
+};
+
 const create = async (name) => {
   const result = await productsModel.create(name);
   return result;
@@ -19,4 +25,5 @@ module.exports = {
   getAll,
   findById,
   create,
+  deleteId,
 };

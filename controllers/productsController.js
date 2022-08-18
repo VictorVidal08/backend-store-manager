@@ -7,12 +7,17 @@ const getAll = async (_req, res) => {
 
 const findById = async (req, res) => {
   const { id } = req.params;
-
   const sale = await productsService.findById(id);
-
   if (!sale) return res.status(404).json({ message: 'Product not found' });
+  return res.status(200).json(sale);
+};
 
-  res.status(200).json(sale);
+const deleteId = async (req, res) => {
+  const { id } = req.params;
+  const result = await productsService.deleteId(id);
+  // console.log('controller', result);
+  if (!result) return res.status(404).json({ message: 'Product not found' });
+  return res.status(204).json('teste');
 };
 
 const create = async (req, res) => {
@@ -30,4 +35,5 @@ module.exports = {
   getAll,
   findById,
   create,
+  deleteId,
 };

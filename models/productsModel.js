@@ -21,6 +21,15 @@ const findById = async (id) => {
   return productsData[0];
 };
 
+const deleteId = async (id) => {
+  const query = `
+    DELETE FROM products WHERE id = ?;
+  `;
+  const [result] = await connection.execute(query, [id]);
+  // console.log('model', result);
+  return result.affectedRows;
+};
+
 const create = async (name) => {
   const query = `
     INSERT INTO products (name) VALUES (?);
@@ -35,4 +44,5 @@ module.exports = {
   getAll,
   findById,
   create,
+  deleteId,
 };
