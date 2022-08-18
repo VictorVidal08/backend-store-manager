@@ -31,9 +31,24 @@ const create = async (req, res) => {
   }
 };
 
+const update = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name } = req.body;
+    const result = await productsService.update(Number(id), name);
+    // console.log('result', result);
+    if (result <= 0) return res.status(404).json({ message: 'Product not found' });
+    return res.status(200).json({ id, name });
+  } catch (error) {
+    // console.error(error);
+    res.status(500).json({ message: 'Houve um problema (ver arquivo productsController)' });
+  }
+};
+
 module.exports = {
   getAll,
   findById,
   create,
   deleteId,
+  update,
 };

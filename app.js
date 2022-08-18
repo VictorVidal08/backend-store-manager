@@ -21,6 +21,8 @@ app.get('/products/:id', products.findById);
 
 app.post('/products', validateProduct.validation, products.create);
 
+app.put('/products/:id', validateProduct.validation, products.update);
+
 app.delete('/products/:id', products.deleteId);
 
 app.post('/sales', salesValidation.validation, sales.create);
