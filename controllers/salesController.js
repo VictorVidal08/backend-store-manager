@@ -31,8 +31,17 @@ const create = async (req, res) => {
   }
 };
 
+const deleteId = async (req, res) => {
+  const { id } = req.params;
+  const result = await salesService.deleteId(id);
+  // console.log('controller', result);
+  if (!result) return res.status(404).json({ message: 'Sale not found' });
+  return res.status(204).json('teste');
+};
+
 module.exports = {
   getAll,
   findById,
   create,
+  deleteId,
 };

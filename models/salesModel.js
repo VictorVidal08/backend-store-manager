@@ -46,8 +46,18 @@ const create = async (products) => {
   return { id: saleId, itemsSold: products };
 };
 
+const deleteId = async (id) => {
+  const query = `
+    DELETE FROM sales_products WHERE sale_id = ?;
+  `;
+  const [result] = await connection.execute(query, [id]);
+  // console.log('model', result);
+  return result.affectedRows;
+};
+
 module.exports = {
   getAll,
   findById,
   create,
+  deleteId,
 };

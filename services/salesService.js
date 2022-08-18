@@ -24,8 +24,15 @@ const create = async (products) => {
   return result;
 };
 
+const deleteId = async (id) => {
+  const result = await salesModel.deleteId(id);
+  // console.log('service', result);
+  return result;
+};
+
 module.exports = {
   getAll,
   findById,
   create,
+  deleteId,
 };
