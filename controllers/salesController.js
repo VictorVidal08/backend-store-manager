@@ -49,7 +49,7 @@ const update = async (req, res) => {
     // console.log('result', result);
     return res.status(200).json({ saleId: Number(saleId), itemsUpdated: products });
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     return res.status(404).json({ message: error.message });
   }
 };

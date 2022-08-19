@@ -64,10 +64,10 @@ const update = async (saleId, productId, quantity) => {
     WHERE sale_id = ? AND product_id = ?;
   `;
   // console.log(typeof id, name);
-  console.log('model', saleId, productId, quantity);
+  // console.log('model', saleId, productId, quantity);
   const [result] = await connection.execute(query, [productId, quantity, saleId, productId]);
   // console.log('model', result.affectedRows);
-  console.log(result);
+  // console.log(result);
   return result.affectedRows;
 };
 
