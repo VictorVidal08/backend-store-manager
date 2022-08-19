@@ -21,6 +21,8 @@ const findById = async (id) => {
 
   const [salesData] = await connection.execute(query, [id]);
 
+  console.log('salesData', salesData);
+
   if (salesData.length === 0) return null;
 
   return salesData;
@@ -55,9 +57,24 @@ const deleteId = async (id) => {
   return result.affectedRows;
 };
 
+const update = async (saleId, productId, quantity) => {
+  const query = `
+    UPDATE sales_products
+    SET product_id = ?, quantity = ?
+    WHERE sale_id = ? AND product_id = ?;
+  `;
+  // console.log(typeof id, name);
+  console.log('model', saleId, productId, quantity);
+  const [result] = await connection.execute(query, [productId, quantity, saleId, productId]);
+  // console.log('model', result.affectedRows);
+  console.log(result);
+  return result.affectedRows;
+};
+
 module.exports = {
   getAll,
   findById,
   create,
   deleteId,
+  update,
 };

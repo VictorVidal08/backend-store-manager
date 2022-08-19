@@ -39,9 +39,25 @@ const deleteId = async (req, res) => {
   return res.status(204).json('teste');
 };
 
+const update = async (req, res) => {
+  try {
+    const { saleId } = req.params;
+    // console.log('controller', req.params);
+    const products = req.body;
+    // console.log('products', products);
+    await salesService.update(saleId, products);
+    // console.log('result', result);
+    return res.status(200).json({ saleId: Number(saleId), itemsUpdated: products });
+  } catch (error) {
+    console.error(error);
+    return res.status(404).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getAll,
   findById,
   create,
+  update,
   deleteId,
 };

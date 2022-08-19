@@ -31,6 +31,8 @@ app.get('/sales', sales.getAll);
 
 app.get('/sales/:id', sales.findById);
 
+app.put('/sales/:saleId', salesValidation.validation, sales.update);
+
 app.delete('/sales/:id', sales.deleteId);
 // não remova essa exportação, é para o avaliador funcionar
 // você pode registrar suas rotas normalmente, como o exemplo acima
